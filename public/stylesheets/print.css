@@ -1,0 +1,23 @@
+table {
+    font-size: 9pt;
+}
+
+#page-title {
+    font-size: 12pt;
+}
+
+#header {
+    display: none;
+}
+
+#menubar {
+    display: none;
+}
+
+#footer {
+    display: none;
+}
+
+#breadcrumbs {
+    display: none;
+}

@@ -1,0 +1,48 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Pasirinkite ataskaitą", :action => "select" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+<div id="heading-info">Ataskaitos periodas nuo <%= @start_date.to_s %> iki <%= @end_date.to_s %></div>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th rowspan="2">Sąskaitos numeris</th>
+      <th rowspan="2">Pavadinimas</th>
+      <th rowspan="2">Matavimo vienetas</th>
+      <th rowspan="2">Kaina</th>
+      <th class="sub-heading" colspan="2">Nurašyta</th>
+    </tr>
+    <tr>
+      <th>Kiekis</th>
+      <th>Suma</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @accounts.each do |account| -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="6"><%= account.number %></td>
+    </tr>
+<%
+     @inventory_items.each do |item|
+       next if @report[account][item] == 0
+-%>
+     <tr class="<%= odd_even_row %>">
+      <td>&nbsp;</td>
+      <td><%= item.name %></td>
+      <td><%= item.measurement_unit %></td>
+      <td><%= number_to_currency(item.unit_price) %></td>
+      <td><%= number_with_delimiter(@report[account][item]) %></td>
+      <td><%= number_to_currency(item.unit_price * @report[account][item]) %></td>
+     </tr>
+<%   end -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="4" class="item-summary">Viso nurašyta iš sąskaitos <%= account.number %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["totals"]) %></td>
+    </tr>
+<% end -%>
+    <tr class="item-summary <%= odd_even_row %>">
+      <td colspan="4" class="item-summary">Viso nurašyta</td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]) %></td>
+    </tr>
+  </tbody>
+</table>

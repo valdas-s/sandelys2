@@ -1,0 +1,12 @@
+<% form_remote_tag :html => { :class => "inventory-by-date-report-form"}, :url => url_for(:action => :inventory_by_date_report_form), :update => "tab-container" do %>
+<fieldset>
+<%= error_messages_for 'report' -%>
+<div class="row"><label for="report_date" class="required-field">Ataskaitos data</label><span
+class="formw"><%= text_field :report, :date, :size=>"10", :maxlength=>"10" %>&nbsp;<%= image_tag "calendar.gif", :id=>"report_date_trigger", :alt => "Ataskaitos data" %></span></div>
+
+<%= hidden_field :report, :first_time, :value => "no" %>
+<div class="spacer">&nbsp;</div>
+
+<div class="form-buttons"><%= submit_tag "Rodyti", :class => "dialogConfirmAction" %></div>
+</fieldset>
+<% end %>

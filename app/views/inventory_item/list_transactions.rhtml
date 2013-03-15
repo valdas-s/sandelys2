@@ -1,0 +1,29 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Inventoriaus sąrašas", :action => "list" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+
+<div id="action-list"><%= link_to "Pašalinti inventorių", {:action => "delete", :id => @inventory_item.id}, {"class" => "entityDeleteAction"} %></div>
+<div id="heading-info"><span class="heading-data">Pavadinimas: <%= @inventory_item.name %></span> | <span class="heading-data">Kodas: <%= @inventory_item.code %></span> | <span class="heading-data">Vieneto kaina: <%= number_to_currency(@inventory_item.unit_price) %></span></div>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Veiksmas</th>
+      <th>Sąskaita</th>
+      <th>Materialiai atsakingas asmuo</th>
+      <th>Kiekis</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @transactions.each do |transaction| -%>
+    <tr class="<%= odd_even_row %>">
+      <td><%= transaction.transaction_date %></td>
+      <td><%= transaction.action_name %></td>
+      <td><%= transaction.action_account %></td>
+      <td><%= transaction.action_employee %></td>
+      <td><%= transaction.action_amount %></td>
+      <td><%= link_to "Pašalinti", {:action => "delete_transaction", :id => transaction.id}, {:class => "entityDeleteAction" } %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>

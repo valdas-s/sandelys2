@@ -1,0 +1,76 @@
+<div id="page-title"><%= @page_title %></div>
+<div id="outer-container">
+  <ul class="tab-list">
+<% @tab_items.each do |item| -%>
+    <li <%= 'id="selected-tab" ' if item.name == @selected_tab.name -%>onclick="setVisibleTab(this, '<%= item.form %>')"><%= item.name %></li>
+<% end -%>
+  </ul>
+</div>
+<div class="tab-container" id="tab-container"><%= render :partial => @selected_tab.form %></div>
+
+<script type="text/javascript">
+//<![CDATA[
+function setVisibleTab(tabItem, formName)
+{
+  oldTabItem = $('selected-tab')
+  if (oldTabItem != null)
+    oldTabItem.id = ''
+  tabItem.id = 'selected-tab'
+
+  showLoadingDiv()
+  var ajax = new Ajax.Updater("tab-container", formName, {asynchronous:true, onComplete: eval(formName+"_setup")})
+
+  return false;
+}
+
+function showLoadingDiv()
+{
+  $('tab-container').innerHTML = '<div id="loading"><%= image_tag "clock.gif" %></div>'
+}
+
+/* Form setup functions */
+function inventory_by_period_report_form_setup()
+{
+}
+
+function inventory_by_date_report_form_setup()
+{
+     Calendar.setup({
+        inputField     :    "report_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "report_date_trigger",
+        align          :    "cl"
+    });
+}
+
+function inventory_by_account_report_form_setup()
+{
+}
+
+function inventory_by_employee_report_form_setup()
+{
+    Calendar.setup({
+        inputField     :    "report_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "report_date_trigger",
+        align          :    "cl"
+    });
+}
+
+function removed_inventory_report_form_setup()
+{
+    Calendar.setup({
+        inputField     :    "report_start_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "report_start_date_trigger",
+        align          :    "cl"
+    });
+    Calendar.setup({
+        inputField     :    "report_end_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "report_end_date_trigger",
+        align          :    "cl"
+    });
+}
+//]]>
+</script>

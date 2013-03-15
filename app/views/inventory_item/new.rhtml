@@ -1,0 +1,9 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Inventoriaus sąrašas", :action => "list" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+
+<% form_for @inventory_item, :url => {:action => 'create'}, :html => {:class => "inventory-item-edit-form"} do %>
+<fieldset>
+  <%= render :partial => 'form' %>
+  <div class="form-buttons"><input class="dialogConfirmAction" name="commit" type="submit" value="Išsaugoti" />&nbsp;<%= link_to 'Atšaukti', {:action => 'list'}, {:class => 'dialogCancelAction'} %></div>
+</fieldset>
+<% end -%>

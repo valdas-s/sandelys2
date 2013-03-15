@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>Sandėlys - <%= @page_title %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag "styles" %>
+  <%= stylesheet_link_tag "print", :media => "print" %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "calendar/calendar.js" %>
+  <%= javascript_include_tag "calendar/lang/calendar-lt-utf8.js" %>
+  <%= javascript_include_tag "calendar/calendar-setup.js" %>
+</head>
+<body>
+<div id="flash-container"><% if flash[:notice] -%><div id="flash_notice" class="flash"><%= flash[:notice] %></div><script type="text/javascript">Event.observe(window, 'load', function() { Effect.Fade('flash_notice', { duration: 5.0 }); })</script><% end -%></div>
+<div id="header"><%= image_tag "logo.gif", :alt => "Logotipas", :id => "program-logo" %><span id="program-title">Sandėlys</span></div>
+<ul id="menubar">
+  <li><%= link_to "Inventorius", :controller => "inventory_item", :action => "list"%></li>
+  <li><%= link_to "Darbuotojai", :controller => "employees", :action => "list"%></li>
+  <li><%= link_to "Sąskaitos", :controller => "accounts", :action => "list"%></li>
+  <li><%= link_to "Ataskaitos", :controller => "reports", :action => "select"%></li>
+</ul>
+<div class="content-container"><%= @content_for_layout %></div>
+<div id="footer">
+<div id="copyright">&copy; Valdas Ševelis, 2005-2008</div>
+</div>
+</body>
+</html>

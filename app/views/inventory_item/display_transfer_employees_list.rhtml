@@ -1,0 +1,3 @@
+<% if @transfer_employees != nil -%>
+<label for="transfer_transaction_to_employee_id" class="required-field">asmeniui</label>&nbsp;<%= select(:transfer_transaction, :to_employee_id, employees_list(@transfer_employees)) %>
+<%end -%>

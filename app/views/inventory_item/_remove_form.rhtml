@@ -1,0 +1,21 @@
+<div class="row"><label for="remove_transaction_transaction_date" class="required-field">Nurašymo data</label><span
+class="formw"><%= text_field :remove_transaction, :transaction_date, :size=>"10", :maxlength=>"10" %>&nbsp;<%= image_tag "calendar.gif", :id=>"remove_transaction_transaction_date_trigger", :alt => "Nurašymo data" %></span></div>
+<script type="text/javascript">
+    Calendar.setup({
+        inputField     :    "remove_transaction_transaction_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "remove_transaction_transaction_date_trigger",
+        align          :    "Tl"
+    });
+</script>
+
+<div class="row"><label for="remove_transaction_account_id" class="required-field">Sąskaitos numeris</label><span
+class="formw"><%= select(:remove_transaction, :account_id, accounts_list(@accounts)) %></span></div>
+
+<div class="row"><label for="remove_transaction_employee_id" class="required-field">Materialiai atsakingas asmuo</label><span
+class="formw" id="employee_list"><%= select(:remove_transaction, :employee_id, employees_list(@employees)) %></span></div>
+
+<div class="row"><label for="remove_transaction_inventory_amount" class="required-field">Kiekis</label><span
+class="formw"><%= text_field :remove_transaction, :inventory_amount, :size=>"10", :maxlength=>"10" %></span></div>
+
+<div class="spacer">&nbsp;</div>

@@ -1,0 +1,412 @@
+body, button {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    margin: 0;
+    background-color: white;
+    color: black;
+}
+
+a:link, a:visited {
+    color: #4961A7;
+    text-decoration: underline;
+}
+
+a:hover, a:active {
+    color: #8396C6;
+    text-decoration: underline;
+}
+
+th {
+    text-align: left;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    font-size: 11pt;
+}
+
+img {
+    border: none;
+}
+
+fieldset {
+  padding: 5px 0 10px 10px;
+}
+
+#copyright {
+    font-size: 8pt;
+    vertical-align: middle;
+    line-height: 14pt;
+}
+
+#footer {
+    margin-top: 15px;
+    height: 14pt;
+    background-color: #dee6f8;
+    width: 100%;
+}
+
+#header {
+    width: 100%;
+    height: 66px;
+    background-color: #dee6f8;
+    margin-bottom: 5px;
+}
+
+#program-logo {
+    top: 0px;
+    right: 0px;
+    font-weight: bold;
+    clear: left;
+    float: left;
+}
+
+#program-title {
+    line-height: 66px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#menubar {
+    margin: 0 0 5px 20px;
+    padding: 0;
+}
+
+#menubar li {
+    display: inline;
+    font-family: "Arial Black", Arial, sans-serif;
+    padding-right: 20px;
+}
+
+#menubar li a {
+    text-decoration: none;
+    color: #D5491D;
+}
+
+#menubar li a:hover {
+    text-decoration: none;
+    color: #1B1172;
+}
+
+#heading-info {
+    background-color: #dddddd;
+    border: 1px solid #aaaaaa;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 10pt;
+}
+
+.heading-data {
+/*    padding-right: 15px;*/
+}
+
+#page-title {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 12pt;
+}
+
+.page-subtitle {
+    font-size: 13pt;
+    font-weight: bold;
+    margin-bottom: 6pt;
+    margin-left: 10px;
+}
+
+#action-list {
+    text-align: right;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#item-filter {
+    margin-bottom: 10px;
+}
+
+.content-container {
+    padding: 0 10px 0 10px;
+}
+
+table.item-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.item-list caption {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+table.item-list thead, table.item-list th.column {
+    background-color: #e7e7e7;
+    text-align: left;
+}
+
+table.item-list td, table.item-list th, table.item-list th.column {
+    border: 1px solid #dddddd;
+    padding: 0 5px 0 5px;
+}
+
+table.item-list th.sub-heading {
+    border-bottom: none;
+    text-align: center;
+}
+
+tr.item-summary {
+    border-top: 2px solid #7f7f7f;
+}
+
+td.item-summary {
+    text-align: right;
+    font-weight: bold;
+}
+
+td.item-totals {
+    font-weight: bold;
+}
+
+tr.even-row {
+    background-color: #f7f7f7;
+}
+
+form input {
+    border: 1px solid #7f7f7f;
+}
+
+form input.no-border {
+    border: none;
+}
+
+form input.important-choice {
+    background: #ff6666;
+    font-weight: bold;
+}
+
+.required-field {
+    font-weight: bold;
+}
+
+.required-marker {
+    font-weight: bold;
+    font-size: 9pt;
+    color: red;
+}
+
+.form-buttons {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.error-message {
+    margin: 0 10px 15px 10px;
+    font-size: 9pt;
+    color: red;
+    font-weight: bold;
+}
+
+#loading {
+    text-align: left;
+    padding-left: 10em;
+}
+
+#loading-popup {
+    position: absolute;
+    display: block;
+    left: 25em;
+    top: 15em;
+    z-index: 10;
+}
+
+.danger {
+    font-weight: bold;
+    color: red;
+}
+
+/* Entity Actions */
+.dialogConfirmAction, .dialogCancelAction, .entityDeleteAction, .entityTransferAction, .entityAddAction, .entityRemoveAction {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 9pt;
+    text-decoration: none;
+    border: 1px solid #cccccc;
+    background-color: white;
+    color: #D5491D;
+    padding: 3px 3px 3px 21px;
+}
+
+a.dialogConfirmAction, a.dialogCancelAction, a:visited.dialogConfirmAction, a:visited.dialogCancelAction,
+    a.entityAddAction, a.entityDeleteAction, a.entityTransferAction, a.entityRemoveAction,
+    a:visited.entityAddAction, a:visited.entityDeleteAction, a:visited.entityTransferAction, a:visited.entityRemoveAction {
+    text-decoration: none;
+    color: #FF6633;
+    cursor: default;
+}
+
+a:hover.dialogConfirmAction, a:hover.dialogCancelAction, .entityDeleteAction:hover, .entityTransferAction:hover, .entityAddAction:hover, .entityRemoveAction:hover {
+    color: #FF6633;
+    background-color: #EFEFEF;
+    text-decoration: none;
+    cursor: default;
+}
+
+.dialogCancelAction, .entityDeleteAction {
+    background: url(../images/delete.gif);
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+}
+
+.entityTransferAction {
+    background: url(../images/transfer.gif);
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+}
+
+.dialogConfirmAction, .entityAddAction {
+    background: url(../images/enter.gif);
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+}
+
+.entityRemoveAction {
+    background: url(../images/remove.gif);
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+}
+
+form a.dialogCancelAction, form a.dialogConfirmAction {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-bottom: -3px;
+    display: inline-block;
+}
+
+form a.dialogCancelAction:hover, form a.dialogConfirmAction:hover {
+    background-color: white;
+}
+
+/* Bread-crumbs */
+#breadcrumbs {
+    text-align: right;
+    margin: 0px 0 5px 0;
+    padding-bottom: 10px;
+    color: #1B1172;
+    font-size: 8pt;
+    width:100%;
+    background: url(../images/bg_strech.gif) repeat-x;
+    background-position: 0 12pt;
+}
+
+#breadcrumbs-inner {
+    background: transparent url(../images/bg_main.gif) no-repeat;
+    background-position: 0 12pt;
+    padding-bottom: 10px;
+}
+
+#breadcrumbs a:link, #breadcrumbs a:visited {
+    text-decoration: underline;
+}
+
+ul.mini-action {
+    text-decoration: none;
+    color: #D5491D;
+    font-size: 8pt;
+    padding-left: 20px;
+}
+
+ul.mini-action li.expanded-section {
+    list-style-image: url(../images/arrow_down.gif);
+    cursor: pointer;
+}
+
+ul.mini-action li.collapsed-section {
+    list-style-image: url(../images/arrow_right.gif);
+    cursor: pointer;
+}
+
+/* Form styles */
+div.form-row {
+    padding-top: 5px;
+}
+
+div.row {
+    clear: both;
+    padding-top: 5px;
+}
+
+div.spacer {
+    clear: both;
+}
+
+div.row label {
+    float: left;
+    text-align: left;
+    width: 100px;
+}
+
+div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 365px;
+}
+
+.dialog-box {
+    width: 650px;
+}
+
+/*Error handling styles */
+#errorExplanation {
+    width: 100%;
+    border: 2px solid #c00;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#ErrorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+#ErrorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+}
+
+.fieldWithErrors {
+    display: inline;
+}
+
+.fieldWithErrors input, .fieldWithErrors select {
+    border: 1pt solid red;
+}
+
+#flash-container {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+.flash {
+	float: right;
+	margin-right: 1ex;
+	margin-top: 1ex;
+	background-color: #8396C6;
+	color: white;
+	padding: 5px;
+}

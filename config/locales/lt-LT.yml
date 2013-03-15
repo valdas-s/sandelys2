@@ -1,0 +1,130 @@
+lt:
+  number:
+    format:
+      # Used in number_with_delimiter()
+      # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+      separator: ","
+      delimiter: ""
+    # Used in number_to_currency()
+    currency:
+      format:
+      # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%n" 
+        unit: "Lt" 
+      # These three are to override number.format and are optional
+        separator: "," 
+        delimiter: "" 
+        precision: 2
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      month_names: [~, "sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio", "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio"]
+  activerecord:
+    errors:
+      template:
+        header: "Pataisykite šias klaidas"
+        body: "Klaidų sąrašas:"
+      # The values :model, :attribute and :value are always available for interpolation
+      # The value :count is available when applicable. Can be used for pluralization.
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "įvesta(-s) neteisingai"
+        confirmation: "negali būti patvirtintas"
+        accepted: "negali būti priimtas"
+        empty: "negali būti tuščias(-a)"
+        blank: "negali būti tuščias(-a)"
+        too_long: "per ilgas (max per ilgas (max {{count}} simbolių)"
+        too_short: "per trumpas (min  {{count}} simbolių)"
+        wrong_length: "klaidingo ilgio (reikia  {{count}} simbolių)"
+        taken: "panaudotas"
+        not_a_number: "turi būti skaičius"
+        greater_than: "turi būti daugiau nei {{count}}"
+        greater_than_or_equal_to: "turi būti daugiau arba lygu {{count}}"
+        equal_to: "turi būti lygus {{count}}"
+        less_than: "turi būti mažiau nei {{count}}"
+        less_than_or_equal_to: "turi būti mažiau arba lygu {{count}}"
+        odd: "turi būti nelyginis"
+        even: "turi būti lyginis"
+        invalid_date: "įvesta neteisingai"
+        # Append your own errors here or at the model/attributes scope.
+        # You can define own errors for models or model attributes.
+        # The values :model, :attribute and :value are always available for interpolation.
+        #
+        # For example,
+        #   models:
+        #     user:
+        #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+        #       attributes:
+        #         login:
+        #           blank: "This is a custom blank message for User login"
+        # Will define custom blank validation message for User model and 
+        # custom blank validation message for login attribute of User model.
+      models:
+        account:
+          attributes:
+            number:
+              too_short: "neįvestas"
+              taken: " - sąskaita su tokiu numeriu jau egzistuoja"
+        employee:
+          attributes:
+            first_name:
+              too_short: "neįvestas"
+            last_name:
+              too_short: "neįvesta"
+        inventory_item:
+          attributes:
+            code:
+              taken: " - inventorius su tokiu kodu jau egzistuoja"
+            unit_price:
+              greater_than: "turi būti teigiamas skaičius"
+        inventory_transaction:
+          attributes:
+            inventory_amount:
+              greater_than: "turi būti teigiamas skaičius"
+            transaction_date:
+              blank: įvesta neteisingai"
+        inventory_transfer_transaction:
+          attributes:
+            from_account_id:
+              blank: "turi būti įvesta"
+            to_account_id:
+              blank: "turi būti įvesta"
+            from_employee_id:
+              blank: "turi būti įvestas"
+
+    # Translate model names. Used in Model.human_name().
+    models:
+      inventory_item: "Inventorius"
+      account: "Sąskaita"
+      employee: "Darbuotojas"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    attributes:
+      inventory_item:
+        name: "Pavadinimas"
+        code: "Kodas"
+        measurement_unit: "Matavimo vienetas"
+        unit_price: "Vieneto kaina"
+      inventory_transaction:
+        inventory_amount: "Kiekis"
+        transaction_date: "Pajamavimo data"
+      inventory_transfer_transaction:
+        from_account_id: "Pirminė sąskaita"
+        to_account_id: "Antrinė sąskaita"
+        from_employee_id: "Pirminis darbuotojas"
+        to_employee_id: "Antrinis darbuotojas"
+      account:
+        number: "Sąskaitos numeris"
+      employee:
+        first_name: "Vardas"
+        last_name: "Pavardė"
+        occupation: "Pareigos"
+      removed_inventory_report_form:
+        start_date: "Periodo pradžia"
+        end_date: "Periodo pabaiga"
+      inventory_by_employee_report_form:
+        date: "Ataskaitos data"
+      inventory_by_date_report_form:
+        date: "Ataskaitos data"

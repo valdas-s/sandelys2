@@ -1,0 +1,33 @@
+<div id="page-title"><%= @page_title %></div>
+<div id="action-list"><%= link_to "Pajamuoti naują inventorių", {:action => "new"}, {"class" => "entityAddAction"} %></div>
+
+<%= will_paginate @inventory_items, :class => "counter", :prev_label => "«", :next_label => "»" %>
+
+<% form_for :inventory_item, :url => { :action => 'set_filter' } do %>
+<fieldset id="item-filter"><legend>Filtras</legend>
+<label for="item_filter_item_name">Pavadinimas:</label>&nbsp;<%= text_field_with_auto_complete :item_filter, :item_name, {:size=>"30", :maxlength=>"200", :autocomplete => "off"}, { :url => url_for(:action => :inventory_items_starting_with), :min_chars => "3" } %>
+<label for="item_filter_account_id" class="required-field">Sąskaitos numeris</label><%= select(:item_filter, :account_id, accounts_list(@accounts)) %>
+<input class="dialogConfirmAction" name="commit" type="submit" value="Filtruoti duomenis" />
+<%= link_to 'Panaikinti filtrą', {:action => 'reset_filter'}, {:class => 'dialogCancelAction'} %></fieldset>
+<% end %>
+
+<table class="item-list">
+  <thead>
+    <tr>
+      <th>Pavadinimas</th>
+      <th>Vieneto kaina</th>
+      <th>Kodas</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @inventory_items.each do |item| %>
+    <tr class="<%= odd_even_row %>">
+      <td><%= link_to item.name, :action => "edit", :id => item.id %></td>
+      <td><%= number_to_currency(item.unit_price) %></td>
+      <td><%= item.code %></td>
+      <td><%= link_to "Pajamuoti", {:action => "add", :id => item.id}, {:class => "entityAddAction" } %>&nbsp;<%= link_to "Pervesti", {:action => "transfer", :id => item.id }, {:class => "entityTransferAction"} %>&nbsp;<%= link_to "Perduoti", {:action => "change_owner", :id => item.id }, {:class => "entityTransferAction"} %>&nbsp;<%= link_to "Nurašyti", {:action => "remove", :id => item.id}, {:class => "entityDeleteAction" } %>&nbsp;&nbsp;<%= link_to "Apyvarta", {:action => "list_transactions", :id => item.id}, {:class => "entityTransferAction" } %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

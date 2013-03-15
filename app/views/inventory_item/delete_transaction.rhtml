@@ -1,0 +1,15 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Inventoriaus sąrašas", :action => "list" %> :  <%= link_to "Inventoriaus apyvarta", :action => "list_transactions", :id => @inventory_item.id %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+
+<% form_for @transaction, :url => {:action => 'destroy_transaction' }, :html => {:method => :delete, :class => "inventory-item-edit-form"} do |f| %>
+<fieldset class="dialog-box">
+<%= hidden_field :transaction, :id -%>
+<p>Įrašo data: <%= @transaction.transaction_date %><br/>
+Veiksmas: <%= @transaction.action_name %><br/>
+Sąskaita: <%= @transaction.action_account %><br/>
+Materialiai atsakingas asmuo: <%= @transaction.action_employee %><br/>
+Kiekis: <%= @transaction.action_amount %></p>
+<p>Ar tikrai norite pašalinti šį įrašą iš sistemos?</p>
+<div class="form-buttons"><input class="dialogConfirmAction" name="commit" type="submit" value="Gerai" />&nbsp;<%= link_to 'Atšaukti', {:action => "list_transactions", :id => @inventory_item.id}, {:class => 'dialogCancelAction'} %></div>
+</fieldset>
+<% end %>

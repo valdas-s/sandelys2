@@ -1,0 +1,8 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Sąskaitų sąrašas", :action => "list" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+<% form_for @account, :url => { :controller => :accounts, :id => @account.id, :action => "destroy" }, :html => {:method => :delete, :class => "inventory-item-edit-form"} do |f| %>
+<fieldset class="dialog-box">
+<p>Ar tikrai norite pašalinti sąskaitą <span class="required-field"><%= @account.number %></span>?</p>
+<div class="form-buttons"><input class="dialogConfirmAction" name="commit" type="submit" value="Gerai" />&nbsp;<%= link_to 'Atšaukti', {:action => 'list'}, {:class => 'dialogCancelAction'} %></div>
+</fieldset>
+<% end %>

@@ -1,0 +1,13 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Inventoriaus sąrašas", :action => "list" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+
+<div id="heading-info"><span class="heading-data">Pavadinimas: <%= @inventory_item.name %></span> | <span class="heading-data">Kodas: <%= @inventory_item.code %></span> | <span class="heading-data">Vieneto kaina: <%= number_to_currency(@inventory_item.unit_price) %></span></div>
+<% form_for @remove_transaction, :url => {:action => 'remove_inventory'}, :html => {:class => "inventory-item-remove-form"} do -%>
+<fieldset>
+  <%= error_messages_for 'remove_transaction' -%>
+  <%= hidden_field :inventory_item, :id -%>
+
+  <%= render :partial => 'remove_form' %>
+  <div class="form-buttons"><input class="dialogConfirmAction" name="commit" type="submit" value="Išsaugoti" />&nbsp;<%= link_to 'Atšaukti', {:action => 'list'}, {:class => 'dialogCancelAction'} %></div>
+</fieldset>
+<% end -%>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+jonas:
+  id: 1
+  first_name: Jonas
+  last_name: Petraitis
+  occupation: Kalvis
+  is_active: true
+petras:
+  id: 2
+  first_name: Petras
+  last_name: Jonaitis
+  occupation: Vairuotojas
+  is_active: true
+antanas:
+  id: 3
+  first_name: Antanas
+  last_name: Vasiliauskas
+  is_active: true
+vytas:
+  id: 4
+  first_name: Vytas
+  last_name: Pirmasis
+  is_active: false

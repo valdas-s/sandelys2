@@ -1,0 +1,19 @@
+<% form_remote_tag :html => { :class => "removed-inventory-report-form"}, :url => url_for(:action => :removed_inventory_report_form), :update => "tab-container" do %>
+<fieldset>
+<%= error_messages_for 'report' -%>
+
+<div class="row"><label for="report_account_id" class="required-field">Sąskaitos numeris</label><span
+class="formw"><%= select(:report, :account_id, accounts_list(@accounts)) %></span></div>
+
+<div class="row"><label for="report_start_date" class="required-field">Periodo pradžia</label><span
+class="formw"><%= text_field :report, :start_date, :size=>"10", :maxlength=>"10" %>&nbsp;<%= image_tag "calendar.gif", :id=>"report_start_date_trigger", :alt => "Periodo pradžia" %></span></div>
+
+<div class="row"><label for="report_end_date" class="required-field">Periodo pabaiga</label><span
+class="formw"><%= text_field :report, :end_date, :size=>"10", :maxlength=>"10" %>&nbsp;<%= image_tag "calendar.gif", :id=>"report_end_date_trigger", :alt => "Periodo pabaiga" %></span></div>
+
+<%= hidden_field :report, :first_time, :value => "no" %>
+<div class="spacer">&nbsp;</div>
+
+<div class="form-buttons"><%= submit_tag "Rodyti", :class => "dialogConfirmAction" %></div>
+</fieldset>
+<% end %>

@@ -1,0 +1,124 @@
+/* Tab bar and items */
+ul.tab-list {
+    list-style: none;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    width: 25em;
+    float: left;
+    clear: left;
+}
+
+ul.tab-list li {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #1B1172;
+    margin-right: 0px;
+    height: 20px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+ul.tab-item a {
+    color: black;
+    text-decoration: none;
+}
+
+ul.tab-list li#selected-tab {
+    background: #e1ebf7;
+    color: blue;
+}
+
+.tab-container {
+    padding: 10px;
+    background: #e1ebf7;
+    margin-left: 25em;
+    width: 29em;
+}
+
+/* Inventory by period report */
+.inventory-by-period-report-form fieldset {
+    width: 24em;
+}
+
+.inventory-by-period-report-form div.row label {
+    float: left;
+    text-align: left;
+    width: 10em;
+}
+
+.inventory-by-period-report-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 13em;
+}
+
+/* Inventory by date report */
+.inventory-by-date-report-form fieldset {
+    width: 20em;
+}
+
+.inventory-by-date-report-form div.row label {
+    float: left;
+    text-align: left;
+    width: 9em;
+}
+
+.inventory-by-date-report-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 10em;
+}
+
+/* Inventory by employee report */
+.inventory-by-employee-report-form fieldset {
+    width: 27em;
+}
+
+.inventory-by-employee-report-form div.row label {
+    float: left;
+    text-align: left;
+    width: 17em;
+}
+
+.inventory-by-employee-report-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 10em;
+}
+
+/* Inventory by account report */
+.inventory-by-account-report-form fieldset {
+    width: 25em;
+}
+
+.inventory-by-account-report-form div.row label {
+    float: left;
+    text-align: left;
+    width: 10em;
+}
+
+.inventory-by-account-report-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 14em;
+}
+
+/* Removed inventory report */
+.removed-inventory-report-form fieldset {
+    width: 21em;
+}
+
+.removed-inventory-report-form div.row label {
+    float: left;
+    text-align: left;
+    width: 10em;
+}
+
+.removed-inventory-report-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 10em;
+}
+

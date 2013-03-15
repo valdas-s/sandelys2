@@ -1,0 +1,31 @@
+.inventory-item-edit-form fieldset {
+    width: 47em;
+}
+
+.inventory-item-edit-form div.row label {
+    float: left;
+    text-align: left;
+    width: 17em;
+}
+
+.inventory-item-edit-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 29em;
+}
+
+.inventory-item-remove-form fieldset {
+	width: 29em;
+}
+
+.inventory-item-remove-form div.row label {
+    float: left;
+    text-align: left;
+    width: 16em;
+}
+
+.inventory-item-remove-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 12em;
+}

@@ -1,0 +1,79 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Pasirinkite ataskaitą", :action => "select" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %> už <%= year_and_month(@start_date) %></div>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th rowspan="2">Sąskaitos numeris</th>
+      <th rowspan="2">Pavadinimas</th>
+      <th rowspan="2">Kodas</th>
+      <th rowspan="2">Matavimo vienetas</th>
+      <th rowspan="2">Kaina</th>
+      <th class="sub-heading" colspan="2">Likutis <%= year_month_and_day(@start_date) %></th>
+      <th class="sub-heading" colspan="2">Pajamos</th>
+      <th class="sub-heading" colspan="2">Išlaidos</th>
+      <th class="sub-heading" colspan="2">Likutis <%= year_month_and_day(@end_date) %></th>
+    </tr>
+    <tr>
+      <th>Kiekis</th>
+      <th>Suma</th>
+      <th>Kiekis</th>
+      <th>Suma</th>
+      <th>Kiekis</th>
+      <th>Suma</th>
+      <th>Kiekis</th>
+      <th>Suma</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @accounts.each do |account| -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="13"><%= account.number %></td>
+    </tr>
+<%
+     @inventory_items.each do |item|
+       next if @report[account][item][@start_date] == 0 &&
+               @report[account][item]["items_added"] == 0 &&
+               @report[account][item]["items_removed"] == 0 &&
+               @report[account][item][@end_date] == 0
+-%>
+    <tr class="<%= odd_even_row %>">
+      <td>&nbsp;</td>
+      <td><%= item.name %></td>
+      <td><%= item.code %></td>
+      <td><%= item.measurement_unit %></td>
+      <td><%= number_to_currency(item.unit_price) %></td>
+      <td><%= number_with_delimiter(@report[account][item][@start_date]) %></td>
+      <td><%= number_to_currency(@report[account][item][@start_date] * item.unit_price) %></td>
+      <td><%= number_with_delimiter(@report[account][item]["items_added"]) %></td>
+      <td><%= number_to_currency(@report[account][item]["items_added"] * item.unit_price) %></td>
+      <td><%= number_with_delimiter(@report[account][item]["items_removed"]) %></td>
+      <td><%= number_to_currency(@report[account][item]["items_removed"] * item.unit_price) %></td>
+      <td><%= number_with_delimiter(@report[account][item][@end_date]) %></td>
+      <td><%= number_to_currency(@report[account][item][@end_date] * item.unit_price) %></td>
+    </tr>
+<%   end -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="5" class="item-summary">Viso sąskaitoje</td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report[account][@start_date]) %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["items_added"]) %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["items_removed"]) %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report[account][@end_date]) %></td>
+    </tr>
+<% end -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="5" class="item-summary">Bendra suma</td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"][@start_date]) %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]["items_added"]) %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]["items_removed"]) %></td>
+      <td>&nbsp;</td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"][@end_date]) %></td>
+    </tr>
+  </tbody>
+</table>

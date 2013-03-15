@@ -1,0 +1,15 @@
+.employee-edit-form fieldset {
+    width: 24em;
+}
+
+.employee-edit-form div.row label {
+    float: left;
+    text-align: left;
+    width: 5em;
+}
+
+.employee-edit-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 18em;
+}

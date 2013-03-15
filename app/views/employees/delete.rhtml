@@ -1,0 +1,8 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Darbuotojų sąrašas", :action => "list" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+<% form_for @employee, :html => {:method => :delete, :class => "inventory-item-edit-form"} do %>
+<fieldset class="dialog-box">
+<p>Ar tikrai norite pašalinti darbuotoją <span class="required-field"><%= @employee.full_name %></span> iš sistemos?<br/></p>
+<div class="form-buttons"><input class="dialogConfirmAction" name="commit" type="submit" value="Gerai" />&nbsp;<%= link_to 'Atšaukti', {:action => 'list'}, {:class => 'dialogCancelAction'} %></div>
+</fieldset>
+<% end %>

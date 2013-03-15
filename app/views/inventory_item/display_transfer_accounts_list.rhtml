@@ -1,0 +1,3 @@
+<% if @transfer_accounts != nil -%>
+<label for="transfer_transaction_to_account_id" class="required-field">į sąskaitą</label>&nbsp;<%= select("transfer_transaction", "to_account_id", accounts_list(@transfer_accounts))%>
+<%end -%>

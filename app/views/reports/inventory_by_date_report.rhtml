@@ -1,0 +1,36 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Pasirinkite ataskaitą", :action => "select" %> : <%= @page_title %></div></div>
+
+<div id="page-title">Ataskaita pagal datą</div>
+<div id="heading-info">Ataskaitos data: <%= @report_date.to_s %></div>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th>Pavadinimas</th>
+      <th>Kodas</th>
+      <th>Sąskaitos numeris</th>
+      <th>Matavimo vienetas</th>
+      <th>Kiekis</th>
+      <th>Vieneto kaina</th>
+      <th>Suma</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @accounts.each do |account|
+     @inventory_items.each do |item|
+       next if @report[account][item] == 0
+-%>
+    <tr class="<%= odd_even_row %>">
+      <td><%= item.name %></td>
+      <td><%= item.code %></td>
+      <td><%= account.number %></td>
+      <td><%= item.measurement_unit %></td>
+      <td><%= number_with_delimiter(@report[account][item]) %></td>
+      <td><%= number_to_currency(item.unit_price) %></td>
+      <td><%= number_to_currency(@report[account][item] * item.unit_price) %></td>
+    </tr>
+<%
+     end
+   end
+-%>
+  </tbody>
+</table>

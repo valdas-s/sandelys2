@@ -1,0 +1,9 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Darbuotojų sąrašas", :action => "list" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+
+<% form_for @employee, :html => {:class => "employee-edit-form"} do |f| %>
+<fieldset>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <div class="form-buttons"><input class="dialogConfirmAction" name="commit" type="submit" value="Išsaugoti" />&nbsp;<%= link_to 'Atšaukti', {:action => 'list'}, {:class => 'dialogCancelAction'} %></div>
+</fieldset>
+<% end %>

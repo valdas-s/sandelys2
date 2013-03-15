@@ -1,0 +1,15 @@
+.account-edit-form fieldset {
+    width: 30em;
+}
+
+.account-edit-form div.row label {
+    float: left;
+    text-align: left;
+    width: 11em;
+}
+
+.account-edit-form div.row span.formw {
+    float: right;
+    text-align: left;
+    width: 18em;
+}

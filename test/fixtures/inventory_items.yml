@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+kibiras:
+  id: 1
+  name: Kibiras
+  code: 001
+  measurement_unit: vnt.
+  unit_price: 11.00
+  
+batai:
+  id: 2
+  name: batai
+  code: 003
+  measurement_unit: vnt.
+  unit_price: 11.30

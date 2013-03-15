@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+jonas_pajamuoja_kibira_i_12345:
+  id: 1
+  transaction_date: 2006-01-03
+  type: InventoryAddTransaction
+jonas_dar_pajamuoja_kibira_i_12345:
+  id: 2
+  transaction_date: 2006-01-15
+  type: InventoryAddTransaction

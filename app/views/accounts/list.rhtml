@@ -1,0 +1,19 @@
+<div id="page-title"><%= @page_title %></div>
+<div id="action-list"><%= link_to "Nauja sąskaita", {:action => "new"}, {"class" => "entityAddAction"} %></div>
+<%= will_paginate @accounts, :class => "counter", :prev_label => "«", :next_label => "»" %>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th>Sąskaitos numeris</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+<% for account in @accounts -%>
+    <tr class="<%= odd_even_row %>">
+      <td><%= link_to account.number, :action => "edit", :id => account.id %></td>
+      <td><%= link_to "Taisyti", {:action => "edit", :id => account.id}, {:class => "entityAddAction" } %>&nbsp;<%= link_to "Pašalinti", {:action => "delete", :id => account.id}, {:class => "entityDeleteAction" } %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>

@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+jonas_pajamuoja_5_kibirus_i_12345:
+  id: 1
+  inventory_transaction_id: 1
+  account_id: 1
+  employee_id: 1
+  inventory_item_id: 1
+  inventory_amount: 5
+  type: AssignEntry
+jonas_pajamuoja_3_kibirus_i_12345:
+  id: 2
+  inventory_transaction_id: 1
+  account_id: 1
+  employee_id: 1
+  inventory_item_id: 1
+  inventory_amount: 3
+  type: AssignEntry
+  

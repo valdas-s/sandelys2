@@ -1,0 +1,24 @@
+<div id="page-title"><%= @page_title %></div>
+<div id="action-list"><%= link_to "Naujas darbuotojas", {:action => "new"}, {"class" => "entityAddAction"} %></div>
+
+<%= will_paginate @employees, :class => "counter", :prev_label => "«", :next_label => "»" %>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th>Pavardė</th>
+      <th>Vardas</th>
+      <th>Pareigos</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @employees.each do |employee| -%>
+    <tr class="<%= odd_even_row %>">
+      <td><%= link_to employee.last_name, :action => "edit", :id => employee.id %></td>
+      <td><%= link_to employee.first_name, :action => "edit", :id => employee.id %></td>
+      <td><%= employee.occupation %></td>
+      <td><%= link_to "Taisyti", {:action => "edit", :id => employee.id}, {:class => "entityAddAction" } %>&nbsp;<%= link_to "Pašalinti", {:action => "delete", :id => employee.id}, {:class => "entityDeleteAction" } %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>

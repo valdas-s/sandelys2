@@ -1,0 +1,14 @@
+<% form_remote_tag :html => { :class => "inventory-by-account-report-form"}, :url => url_for(:action => :inventory_by_account_report_form), :update => "tab-container" do %>
+<fieldset>
+
+<div class="row"><label for="report_account_id" class="required-field">Sąskaitos numeris</label><span
+class="formw"><%= select(:report, :account_id, accounts_list(@accounts)) %></span></div>
+
+<div class="row"><label for="report_year_and_month" class="required-field">Ataskaitos data</label><span
+class="formw"><%= select(:report, :year_and_month, year_month_list(@report_dates)) %></span></div>
+
+<div class="spacer">&nbsp;</div>
+
+<div class="form-buttons"><%= submit_tag "Rodyti", :class => "dialogConfirmAction" %></div>
+</fieldset>
+<% end %>

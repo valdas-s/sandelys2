@@ -1,0 +1,50 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Pasirinkite ataskaitą", :action => "select" %> : <%= @page_title %></div></div>
+<div id="page-title"><%= @page_title %></div>
+<div id="heading-info">Ataskaitos data: <%= @report_date %></div>
+
+<% @employees.each do |employee| -%>
+<table class="item-list">
+  <caption>Materialiai atsakingas asmuo: <%= employee.full_name %></caption>
+  <thead>
+    <tr>
+      <th>Sąskaitos numeris</th>
+      <th>Pavadinimas</th>
+      <th>Kodas</th>
+      <th>Matavimo vienetas</th>
+      <th>Kiekis</th>
+      <th>Vieneto kaina</th>
+      <th>Suma</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @accounts.each do |account| -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="7"><%= account.number %></td>
+    </tr>
+<%
+     @inventory_items.each do |item|
+       next if @report[employee][account][item] == 0
+-%>
+    <tr class="<%= odd_even_row %>">
+      <td>&nbsp;</td>
+      <td><%= item.name %></td>
+      <td><%= item.code %></td>
+      <td><%= item.measurement_unit %></td>
+      <td><%= number_with_delimiter(@report[employee][account][item]) %></td>
+      <td><%= number_to_currency(item.unit_price) %></td>
+      <td><%= number_to_currency(item.unit_price * @report[employee][account][item]) %></td>
+    </tr>
+<%   end -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="6" class="item-summary">Viso sąskaitoje <%= account.number %></td>
+      <td class="item-totals"><%= number_to_currency(@report[employee][account]["total"]) %></td>
+    </tr>
+<% end -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="6" class="item-summary">Viso</td>
+      <td class="item-totals"><%= number_to_currency(@report[employee]["total"]) %></td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<% end -%>

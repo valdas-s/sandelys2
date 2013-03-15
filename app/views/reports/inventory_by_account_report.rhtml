@@ -1,0 +1,54 @@
+<div id="breadcrumbs"><div id="breadcrumbs-inner"><%= link_to "Pasirinkite ataskaitą", :action => "select" %> : <%= @page_title %></div></div>
+
+<div id="page-title"><%= @page_title %> už <%= year_and_month(@start_date) %></div>
+<table class="item-list">
+  <thead>
+    <tr>
+      <th>Sąskaitos numeris</th>
+      <th>Materialiai atsakingas asmuo</th>
+      <th>Likutis <%= year_month_and_day(@start_date) %></th>
+      <th>Pajamos</th>
+      <th>Išlaidos</th>
+      <th>Likutis <%= year_month_and_day(@end_date) %></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @accounts.each do |account| -%>
+    <tr class="<%= odd_even_row %>">
+      <td colspan="6"><%= account.number %></td>
+    </tr>
+<%
+   @employees.each do |employee|
+   next if @report[account][employee]["start_date"] == 0 &&
+           @report[account][employee]["total_received"] == 0 &&
+           @report[account][employee]["total_removed"] == 0 &&
+           @report[account][employee]["end_date"] == 0
+ -%>
+    <tr class="<%= odd_even_row %>">
+      <td>&nbsp;</td>
+      <td><%= employee.full_name %></td>
+      <td><%= number_to_currency(@report[account][employee]["start_date"]) %></td>
+      <td><%= number_to_currency(@report[account][employee]["total_received"]) %></td>
+      <td><%= number_to_currency(@report[account][employee]["total_removed"]) %></td>
+      <td><%= number_to_currency(@report[account][employee]["end_date"]) %></td>
+    </tr>
+<%   end -%>
+    <tr class="<%= odd_even_row %>">
+      <td>&nbsp;</td>
+      <td class="item-summary">Viso sąskaitoje <%= account.number %></td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["totals"]["start_date"]) %></td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["totals"]["total_received"]) %></td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["totals"]["total_removed"]) %></td>
+      <td class="item-totals"><%= number_to_currency(@report[account]["totals"]["end_date"]) %></td>
+    </tr>
+<% end -%>
+    <tr class="item-summary <%= odd_even_row %>">
+      <td>&nbsp;</td>
+      <td class="item-summary">Bendra suma</td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]["start_date"]) %></td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]["total_received"]) %></td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]["total_removed"]) %></td>
+      <td class="item-totals"><%= number_to_currency(@report["totals"]["end_date"]) %></td>
+    </tr>
+  </tbody>
+</table>

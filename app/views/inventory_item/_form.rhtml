@@ -1,0 +1,42 @@
+<%= error_messages_for 'inventory_item' -%>
+<%= error_messages_for 'add_transaction' unless edit_mode?(@inventory_item) -%>
+
+<%= hidden_field :inventory_item, :id if edit_mode?(@inventory_item) -%>
+
+<div class="row"><label for="inventory_item_name" class="required-field">Pavadinimas</label><span
+ class="formw"><%= text_field :inventory_item, :name, :size=>"50", :maxlength=>"200" %></span></div>
+
+<div class="row"><label for="inventory_item_code" class="required-field">Kodas</label><span
+class="formw"><%= text_field :inventory_item, :code, :size=>"6", :maxlength=>"10" %></span></div>
+
+<div class="row"><label for="inventory_item_measurement_unit" class="required-field">Matavimo vienetas</label><span
+class="formw"><%= text_field :inventory_item, :measurement_unit, :size=>"20", :maxlength=>"20" %></span></div>
+
+<div class="row"><label for="inventory_item_unit_price" class="required-field">Vieneto kaina</label><span
+class="formw"><%= text_field :inventory_item, :unit_price, :size=>"20", :maxlength=>"20" %></span></div>
+
+<div class="spacer">&nbsp;</div>
+
+<% unless edit_mode?(@inventory_item) -%>
+<div class="row"><label for="add_transaction_account_id" class="required-field">Sąskaitos numeris</label><span
+class="formw"><%= select(:add_transaction, :account_id, accounts_list(@accounts)) %></span></div>
+
+<div class="row"><label for="add_transaction_transaction_date" class="required-field">Pajamavimo data</label><span
+class="formw"><%= text_field :add_transaction, :transaction_date, :size=>"10", :maxlength=>"10" %>&nbsp;<%= image_tag "calendar.gif", :id=>"add_transaction_transaction_date_trigger", :alt => "Pajamavimo data" %></span></div>
+<script type="text/javascript">
+    Calendar.setup({
+        inputField     :    "add_transaction_transaction_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "add_transaction_transaction_date_trigger",
+        align          :    "Tl"
+    });
+</script>
+
+<div class="row"><label for="add_transaction_inventory_amount" class="required-field">Kiekis</label><span
+class="formw"><%= text_field :add_transaction, :inventory_amount, :size=>"10", :maxlength=>"10" %></span></div>
+
+<div class="row"><label for="add_transaction_employee_id" class="required-field">Materialiai atsakingas asmuo</label><span
+class="formw"><%= select(:add_transaction, :employee_id, employees_list(@employees)) %></span></div>
+
+<div class="spacer">&nbsp;</div>
+<% end -%>

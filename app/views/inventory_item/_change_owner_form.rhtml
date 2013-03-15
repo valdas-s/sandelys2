@@ -1,0 +1,35 @@
+<script type="text/javascript">
+
+function update_to_employee_list(select_list)
+{
+  $('loading-popup').style.display = 'block'
+  var ajax = new Ajax.Updater("transfer_to_employee", "<%= url_for(:action=>'display_transfer_employees_list', :id => @inventory_item)%>?skip_self=true&from_employee_id="+select_list.value, {asynchronous:true, onComplete: hide_popup})
+
+  return false;
+}
+
+function hide_popup(req)
+{
+  $('loading-popup').style.display = 'none'
+}
+</script>
+
+<div class="form-row"><label for="transfer_transaction_transaction_date" class="required-field">Perdavimo data</label>&nbsp;<%= text_field :transfer_transaction, :transaction_date, :size=>"10", :maxlength=>"10" %>&nbsp;<%= image_tag "calendar.gif", :id=>"transfer_transaction_transaction_date_trigger", :alt => "Perdavimo data" %></div>
+<script type="text/javascript">
+    Calendar.setup({
+        inputField     :    "transfer_transaction_transaction_date",
+        ifFormat       :    "%Y-%m-%d",
+        button         :    "transfer_transaction_transaction_date_trigger",
+        align          :    "Tl"
+    });
+</script>
+
+<div class="form-row"><label for="transfer_transaction_from_account_id" class="required-field">Sąskaita</label>&nbsp;<%= select(:transfer_transaction, :from_account_id, accounts_list(@accounts)) %></div>
+
+<div class="form-row"><label for="transfer_transaction_from_employee_id" class="required-field">Iš materialiai atsakingo asmens</label>&nbsp;<%= select(:transfer_transaction, :from_employee_id, employees_list(@employees), {:prompt => "- Pasirinkite asmenį -"}, {:onchange=>"update_to_employee_list(this)"}) %>
+<span id="transfer_to_employee"><%= render_component(:action => "display_transfer_employees_list", :layout => false, :params => {:id => @inventory_item.id, :from_employee_id => @transfer_transaction.from_employee_id, :to_employee_id => @transfer_transaction.to_employee_id}) %></span></div>
+
+<div class="form-row"><label for="transfer_transaction_inventory_amount" class="required-field">Kiekį</label>&nbsp;<%= text_field :transfer_transaction, :inventory_amount, :size=>"10", :maxlength=>"10" %></div>
+
+<div class="spacer">&nbsp;</div>
+<div id="loading-popup" style="display: none"><%= image_tag "clock.gif" %></div>
